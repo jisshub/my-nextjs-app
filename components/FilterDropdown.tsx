@@ -15,13 +15,18 @@ import ServiceNameIcon from '@mui/icons-material/Label';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import DateIcon from '@mui/icons-material/DateRange';
 import PeopleIcon from '@mui/icons-material/People';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function FilterDropdown() {
   const [open, setOpen] = React.useState(false);
+  const router = useRouter();
 
   const handleClick = () => {
     setOpen(!open);
+  };
+
+  const handleNavigation = (path: string) => {
+    router.push(path);
   };
 
   return (
@@ -50,50 +55,40 @@ export default function FilterDropdown() {
 
           <Collapse in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <Link href="/service/date-of-schedule" passHref>
-                <ListItemButton sx={{ pl: 8 }}>
-                  <ListItemIcon>
-                    <DateIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Date of Schedule" />
-                </ListItemButton>
-              </Link>
-              <Link href="/service/people" passHref>
-                <ListItemButton sx={{ pl: 8 }}>
-                  <ListItemIcon>
-                    <PeopleIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="People" />
-                </ListItemButton>
-              </Link>
+              <ListItemButton sx={{ pl: 8 }} onClick={() => handleNavigation('/service/date-of-schedule')}>
+                <ListItemIcon>
+                  <DateIcon />
+                </ListItemIcon>
+                <ListItemText primary="Date of Schedule" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 8 }} onClick={() => handleNavigation('/service/people')}>
+                <ListItemIcon>
+                  <PeopleIcon />
+                </ListItemIcon>
+                <ListItemText primary="People" />
+              </ListItemButton>
             </List>
           </Collapse>
         </List>
 
-        <Link href="/service-type" passHref>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <ServiceTypeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Service Type" />
-          </ListItemButton>
-        </Link>
-        <Link href="/service-name" passHref>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <ServiceNameIcon />
-            </ListItemIcon>
-            <ListItemText primary="Service Name" />
-          </ListItemButton>
-        </Link>
-        <Link href="/schedule" passHref>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <ScheduleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Schedule" />
-          </ListItemButton>
-        </Link>
+        <ListItemButton sx={{ pl: 4 }} onClick={() => handleNavigation('/service-type')}>
+          <ListItemIcon>
+            <ServiceTypeIcon />
+          </ListItemIcon>
+          <ListItemText primary="Service Type" />
+        </ListItemButton>
+        <ListItemButton sx={{ pl: 4 }} onClick={() => handleNavigation('/service-name')}>
+          <ListItemIcon>
+            <ServiceNameIcon />
+          </ListItemIcon>
+          <ListItemText primary="Service Name" />
+        </ListItemButton>
+        <ListItemButton sx={{ pl: 4 }} onClick={() => handleNavigation('/schedule')}>
+          <ListItemIcon>
+            <ScheduleIcon />
+          </ListItemIcon>
+          <ListItemText primary="Schedule" />
+        </ListItemButton>
       </Collapse>
     </List>
   );
