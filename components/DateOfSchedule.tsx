@@ -31,13 +31,17 @@ const DateOfSchedule = () => {
           label="From"
           value={fromDate}
           onChange={(newValue) => setFromDate(newValue)}
-          renderInput={(params: any) => <TextField {...params} fullWidth sx={{ mb: 2 }} />}
+          slots={{
+            textField: (props) => <TextField {...props} fullWidth sx={{ mb: 2 }} />,
+          }}
         />
         <DatePicker
           label="To"
           value={toDate}
           onChange={(newValue) => setToDate(newValue)}
-          renderInput={(params: any) => <TextField {...params} fullWidth sx={{ mb: 2 }} />}
+          slots={{
+            textField: (props) => <TextField {...props} fullWidth sx={{ mb: 2 }} />,
+          }}
         />
       </LocalizationProvider>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
