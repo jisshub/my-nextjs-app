@@ -1,4 +1,6 @@
 // components/DateOfSchedule.tsx
+"use client";
+
 import React from 'react';
 import { Box, Button, TextField, Typography, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
