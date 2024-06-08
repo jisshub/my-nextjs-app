@@ -1,3 +1,4 @@
+// components/FilterDropdown.tsx
 "use client";
 
 import * as React from 'react';
@@ -15,7 +16,7 @@ import ServiceNameIcon from '@mui/icons-material/Label';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import DateIcon from '@mui/icons-material/DateRange';
 import PeopleIcon from '@mui/icons-material/People';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'; // Ensure the correct use of useRouter from next/navigation
 
 export default function FilterDropdown() {
   const [open, setOpen] = React.useState(false);

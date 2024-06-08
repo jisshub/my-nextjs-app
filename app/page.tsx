@@ -1,4 +1,6 @@
-import FilterDropdown from "../components/FilterDropdown";
+import dynamic from 'next/dynamic';
+
+const FilterDropdown = dynamic(() => import('../components/FilterDropdown'), { ssr: false });
 
 export default function Home() {
   return (
