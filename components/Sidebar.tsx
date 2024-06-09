@@ -6,9 +6,16 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PeopleIcon from '@mui/icons-material/People';
 import CategoryIcon from '@mui/icons-material/Category';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Sidebar = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const pathname = usePathname();
+  const [selectedIndex, setSelectedIndex] = useState(() => {
+    if (pathname === '/service/date-of-schedule') return 0;
+    if (pathname === '/service/people') return 1;
+    if (pathname === '/service/products') return 2;
+    return 0;
+  });
 
   const handleListItemClick = (index: number) => {
     setSelectedIndex(index);
