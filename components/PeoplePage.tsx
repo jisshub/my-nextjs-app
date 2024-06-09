@@ -1,35 +1,94 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, TextField, Button, Typography, List, ListItem, ListItemText, Chip, Checkbox, Radio, RadioGroup, FormControlLabel, FormControl } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Button,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Chip,
+  Checkbox,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+} from "@mui/material";
 import { CiSearch } from "react-icons/ci";
 
 const users = [
   {
     id: 1,
     name: "Abin",
-    tag: "Attendee"
+    tag: "Attendee",
+    type: "Class",
+    status: "Public",
   },
   {
     id: 2,
     name: "Ajith",
-    tag: "Payer"
+    tag: "Payer",
+    type: "Facility",
+    status: "Private",
   },
   {
     id: 3,
     name: "Alan",
-    tag: "Payer"
+    tag: "Payer",
+    type: "Facility",
+    status: "Public",
   },
   {
     id: 4,
     name: "Alex",
-    tag: "Attendee"
+    tag: "Attendee",
+    type: "Class",
+    status: "Private",
   },
   {
     id: 5,
     name: "Akash",
-    tag: "Attendee"
-  }
+    tag: "Attendee",
+    type: "Class",
+    status: "Public",
+  },
+  {
+    id: 6,
+    name: "Brian",
+    tag: "Attendee",
+    type: "Facility",
+    status: "Private",
+  },
+  {
+    id: 7,
+    name: "Chris",
+    tag: "Payer",
+    type: "Class",
+    status: "Public",
+  },
+  {
+    id: 8,
+    name: "David",
+    tag: "Attendee",
+    type: "Facility",
+    status: "Public",
+  },
+  {
+    id: 9,
+    name: "Ethan",
+    tag: "Payer",
+    type: "Class",
+    status: "Private",
+  },
+  {
+    id: 10,
+    name: "Frank",
+    tag: "Attendee",
+    type: "Facility",
+    status: "Private",
+  },
 ];
 
 const PeoplePage = () => {
@@ -45,11 +104,13 @@ const PeoplePage = () => {
     setSearchText(event.target.value);
   };
 
-  const handleSearchOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchOptionChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setSearchOption(event.target.value);
   };
 
-  const filteredUsers = users.filter(user =>
+  const filteredUsers = users.filter((user) =>
     searchOption === "name"
       ? user.name.toLowerCase().includes(searchText.toLowerCase())
       : user.tag.toLowerCase().includes(searchText.toLowerCase())
@@ -63,14 +124,24 @@ const PeoplePage = () => {
           value={searchOption}
           onChange={handleSearchOptionChange}
         >
-          <FormControlLabel value="name" control={<Radio />} label="Search by name" />
-          <FormControlLabel value="tag" control={<Radio />} label="Search by tags" />
+          <FormControlLabel
+            value="name"
+            control={<Radio />}
+            label="Search by name"
+          />
+          <FormControlLabel
+            value="tag"
+            control={<Radio />}
+            label="Search by tags"
+          />
         </RadioGroup>
       </FormControl>
       <TextField
         fullWidth
         variant="outlined"
-        placeholder={`Search ${searchOption === 'name' ? 'service name' : 'tags'}`}
+        placeholder={`Search ${
+          searchOption === "name" ? "service name" : "tags"
+        }`}
         value={searchText}
         onChange={handleSearchChange}
         InputProps={{
@@ -96,11 +167,15 @@ const PeoplePage = () => {
           </Typography>
         )}
         <List>
-          {filteredUsers.map(user => (
-            <ListItem key={user.id} sx={{ display: "flex", alignItems: "center" }}>
+          {filteredUsers.map((user) => (
+            <ListItem
+              key={user.id}
+              sx={{ display: "flex", alignItems: "center" }}
+            >
               <Checkbox />
               <ListItemText primary={user.name} />
-              <Chip label={user.tag} />
+              <Chip label={user.type} className="mr-2" />
+              <Chip label={user.status} />
             </ListItem>
           ))}
         </List>
