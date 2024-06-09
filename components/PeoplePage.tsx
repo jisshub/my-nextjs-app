@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, TextField, Button, Typography, List, ListItem, ListItemText, Chip, Checkbox } from "@mui/material";
+import { Box, TextField, Button, Typography, List, ListItem, ListItemText, Chip, Checkbox, Radio, RadioGroup, FormControlLabel, FormControl } from "@mui/material";
 import { CiSearch } from "react-icons/ci";
 
 const users = [
@@ -34,25 +34,43 @@ const users = [
 
 const PeoplePage = () => {
   const [searchText, setSearchText] = useState("");
+  const [searchOption, setSearchOption] = useState("name");
 
   const resetToDefault = () => {
     setSearchText("");
+    setSearchOption("name");
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);
   };
 
+  const handleSearchOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchOption(event.target.value);
+  };
+
   const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(searchText.toLowerCase())
+    searchOption === "name"
+      ? user.name.toLowerCase().includes(searchText.toLowerCase())
+      : user.tag.toLowerCase().includes(searchText.toLowerCase())
   );
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", p: 2, width: "100%" }}>
+      <FormControl component="fieldset">
+        <RadioGroup
+          row
+          value={searchOption}
+          onChange={handleSearchOptionChange}
+        >
+          <FormControlLabel value="name" control={<Radio />} label="Search by name" />
+          <FormControlLabel value="tag" control={<Radio />} label="Search by tags" />
+        </RadioGroup>
+      </FormControl>
       <TextField
         fullWidth
         variant="outlined"
-        placeholder="Search Payer or attendee name"
+        placeholder={`Search ${searchOption === 'name' ? 'service name' : 'tags'}`}
         value={searchText}
         onChange={handleSearchChange}
         InputProps={{
