@@ -19,11 +19,9 @@ const Sidebar = () => {
       <List component="nav">
         <Link href="/service/date-of-schedule" passHref>
           <ListItem
-            button
             component="a"
-            selected={selectedIndex === 0}
             onClick={() => handleListItemClick(0)}
-            sx={{ backgroundColor: selectedIndex === 0 ? '#f0f0f0' : 'transparent' }}
+            sx={{ backgroundColor: selectedIndex === 0 ? '#f0f0f0' : 'transparent', '&:hover': { backgroundColor: '#f0f0f0' } }}
           >
             <ListItemIcon>
               <CalendarTodayIcon />
@@ -33,11 +31,9 @@ const Sidebar = () => {
         </Link>
         <Link href="/service/people" passHref>
           <ListItem
-            button
             component="a"
-            selected={selectedIndex === 1}
             onClick={() => handleListItemClick(1)}
-            sx={{ backgroundColor: selectedIndex === 1 ? '#f0f0f0' : 'transparent' }}
+            sx={{ backgroundColor: selectedIndex === 1 ? '#f0f0f0' : 'transparent', '&:hover': { backgroundColor: '#f0f0f0' } }}
           >
             <ListItemIcon>
               <PeopleIcon />
@@ -47,11 +43,9 @@ const Sidebar = () => {
         </Link>
         <Link href="/service/products" passHref>
           <ListItem
-            button
             component="a"
-            selected={selectedIndex === 2}
             onClick={() => handleListItemClick(2)}
-            sx={{ backgroundColor: selectedIndex === 2 ? '#f0f0f0' : 'transparent' }}
+            sx={{ backgroundColor: selectedIndex === 2 ? '#f0f0f0' : 'transparent', '&:hover': { backgroundColor: '#f0f0f0' } }}
           >
             <ListItemIcon>
               <CategoryIcon />
