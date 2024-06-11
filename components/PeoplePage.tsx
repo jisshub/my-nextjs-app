@@ -15,8 +15,10 @@ import {
   RadioGroup,
   FormControlLabel,
   FormControl,
+  IconButton,
 } from "@mui/material";
 import { CiSearch } from "react-icons/ci";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 const users = [
   {
@@ -104,13 +106,11 @@ const PeoplePage = () => {
     setSearchText(event.target.value);
   };
 
-  const handleSearchOptionChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleSearchOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchOption(event.target.value);
   };
 
-  const filteredUsers = users.filter((user) =>
+  const filteredUsers = users.filter(user =>
     searchOption === "name"
       ? user.name.toLowerCase().includes(searchText.toLowerCase())
       : user.tag.toLowerCase().includes(searchText.toLowerCase())
@@ -139,9 +139,7 @@ const PeoplePage = () => {
       <TextField
         fullWidth
         variant="outlined"
-        placeholder={`Search ${
-          searchOption === "name" ? "service name" : "tags"
-        }`}
+        placeholder={`Search ${searchOption === "name" ? "service name" : "tags"}`}
         value={searchText}
         onChange={handleSearchChange}
         InputProps={{
@@ -150,6 +148,11 @@ const PeoplePage = () => {
               <CiSearch size={"30"} />
             </Box>
           ),
+          endAdornment: searchText ? (
+            <IconButton onClick={() => setSearchText("")}>
+              <IoIosCloseCircleOutline size={"30"} />
+            </IconButton>
+          ) : null,
         }}
       />
       <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
@@ -168,10 +171,7 @@ const PeoplePage = () => {
         )}
         <List>
           {filteredUsers.map((user) => (
-            <ListItem
-              key={user.id}
-              sx={{ display: "flex", alignItems: "center" }}
-            >
+            <ListItem key={user.id} sx={{ display: "flex", alignItems: "center" }}>
               <Checkbox />
               <ListItemText primary={user.name} />
               <Chip label={user.type} className="mr-2" />
