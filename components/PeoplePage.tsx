@@ -78,11 +78,6 @@ const PeoplePage = () => {
         >
           Reset to Default
         </button>
-        <button
-          className="bg-black text-white font-bold hover:bg-gray-800 px-4 py-2 rounded-md normal-case"
-        >
-          Apply
-        </button>
       </div>
       <div className="mt-4">
         {searchText && (
