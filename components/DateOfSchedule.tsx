@@ -1,9 +1,9 @@
 "use client";
 
 import React from 'react';
-import { Box, Button, TextField, Typography, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
+import { Button, MenuItem, Select, TextField, Typography } from '@mui/material';
 
 const DateOfSchedule = () => {
   const [fromDate, setFromDate] = React.useState<Date | null>(null);
@@ -17,16 +17,16 @@ const DateOfSchedule = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', p: 2 }}>
+    <div className="flex flex-col p-4 space-y-4">
       <Typography variant="h6" gutterBottom>
         Show orders for
       </Typography>
-      <FormControl fullWidth variant="outlined" sx={{ mb: 2 }}>
-        <InputLabel>Show orders for</InputLabel>
+      <div className="w-full mb-4">
+        <label className="block text-gray-700">Show orders for</label>
         <Select
           value={orderTime}
           onChange={(e) => setOrderTime(e.target.value)}
-          label="Show orders for"
+          className="w-full border border-gray-300 rounded-md p-2"
         >
           <MenuItem value="All time">All time</MenuItem>
           <MenuItem value="Last 30 days">Last 30 days</MenuItem>
@@ -38,15 +38,15 @@ const DateOfSchedule = () => {
           <MenuItem value="This Year">This Year</MenuItem>
           <MenuItem value="Last Year">Last Year</MenuItem>
         </Select>
-      </FormControl>
+      </div>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <Box sx={{ display: 'flex', gap: 2 }}>
+        <div className="flex space-x-4">
           <DatePicker
             label="From"
             value={fromDate}
             onChange={(newValue) => setFromDate(newValue)}
             slots={{
-              textField: (props) => <TextField {...props} fullWidth />,
+              textField: (props) => <TextField {...props} fullWidth className="mb-2" />,
             }}
           />
           <DatePicker
@@ -54,39 +54,26 @@ const DateOfSchedule = () => {
             value={toDate}
             onChange={(newValue) => setToDate(newValue)}
             slots={{
-              textField: (props) => <TextField {...props} fullWidth />,
+              textField: (props) => <TextField {...props} fullWidth className="mb-2" />,
             }}
           />
-        </Box>
+        </div>
       </LocalizationProvider>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
+      <div className="flex justify-between mt-4">
         <Button
-          variant="contained"
           onClick={resetToDefault}
-          sx={{
-            backgroundColor: '#f5f5f5',
-            color: 'black',
-            '&:hover': {
-              backgroundColor: '#e0e0e0',
-            },
-          }}
+          className="bg-gray-300 text-black hover:bg-gray-300 px-4 py-2 rounded-md normal-case"
         >
           Reset to Default
         </Button>
         <Button
-          variant="contained"
-          sx={{
-            backgroundColor: 'black',
-            color: 'white',
-            '&:hover': {
-              backgroundColor: '#333',
-            },
-          }}
+          className="bg-black text-white hover:bg-gray-800 px-4 py-2 
+          rounded-md normal-case"
         >
           Apply
         </Button>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 
