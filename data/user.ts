@@ -1,0 +1,73 @@
+export const users = [
+    {
+      id: 1,
+      name: "Abin",
+      tag: "Attendee",
+      type: "Class",
+      status: "Public",
+    },
+    {
+      id: 2,
+      name: "Ajith",
+      tag: "Payer",
+      type: "Facility",
+      status: "Private",
+    },
+    {
+      id: 3,
+      name: "Alan",
+      tag: "Payer",
+      type: "Facility",
+      status: "Public",
+    },
+    {
+      id: 4,
+      name: "Alex",
+      tag: "Attendee",
+      type: "Class",
+      status: "Private",
+    },
+    {
+      id: 5,
+      name: "Akash",
+      tag: "Attendee",
+      type: "Class",
+      status: "Public",
+    },
+    {
+      id: 6,
+      name: "Brian",
+      tag: "Attendee",
+      type: "Facility",
+      status: "Private",
+    },
+    {
+      id: 7,
+      name: "Chris",
+      tag: "Payer",
+      type: "Class",
+      status: "Public",
+    },
+    {
+      id: 8,
+      name: "David",
+      tag: "Attendee",
+      type: "Facility",
+      status: "Public",
+    },
+    {
+      id: 9,
+      name: "Ethan",
+      tag: "Payer",
+      type: "Class",
+      status: "Private",
+    },
+    {
+      id: 10,
+      name: "Frank",
+      tag: "Attendee",
+      type: "Facility",
+      status: "Private",
+    },
+  ];
+  

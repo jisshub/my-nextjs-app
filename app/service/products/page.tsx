@@ -1,7 +1,15 @@
 import React from 'react';
+import ProductsPage from '../../../components/ProductsPage';
+import Sidebar from '../../../components/Sidebar';
+import { Box } from '@mui/material';
 
-const ProductsPage = () => {
-  return <div>Services / Products Page</div>;
+const ProductsPageComponent = () => {
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <Sidebar />
+      <ProductsPage />
+    </Box>
+  );
 };
 
-export default ProductsPage;
+export default ProductsPageComponent;
