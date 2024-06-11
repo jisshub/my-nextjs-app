@@ -84,7 +84,17 @@ const PeoplePage = () => {
         }}
       />
       <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-        <Button variant="outlined" onClick={resetToDefault}>
+      <Button
+          variant="contained"
+          onClick={resetToDefault}
+          sx={{
+            backgroundColor: '#f5f5f5',
+            color: 'black',
+            '&:hover': {
+              backgroundColor: '#e0e0e0',
+            },
+          }}
+        >
           Reset to Default
         </Button>
       </Box>

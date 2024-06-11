@@ -71,10 +71,29 @@ const ProductsPage = () => {
       </FormControl>
       
       <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-        <Button variant="outlined" onClick={resetToDefault}>
+        <Button
+          variant="contained"
+          onClick={resetToDefault}
+          sx={{
+            backgroundColor: '#f5f5f5',
+            color: 'black',
+            '&:hover': {
+              backgroundColor: '#e0e0e0',
+            },
+          }}
+        >
           Reset to Default
         </Button>
-        <Button variant="contained" color="primary" onClick={handleApply}>
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: 'black',
+            color: 'white',
+            '&:hover': {
+              backgroundColor: '#333',
+            },
+          }}
+        >
           Apply
         </Button>
       </Box>
