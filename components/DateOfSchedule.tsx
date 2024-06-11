@@ -62,12 +62,12 @@ const DateOfSchedule = () => {
       <div className="flex justify-between mt-4">
         <Button
           onClick={resetToDefault}
-          className="bg-gray-300 text-black hover:bg-gray-300 px-4 py-2 rounded-md normal-case"
+          className="bg-gray-300 font-bold text-black hover:bg-gray-300 px-4 py-2 rounded-md normal-case"
         >
           Reset to Default
         </Button>
         <Button
-          className="bg-black text-white hover:bg-gray-800 px-4 py-2 
+          className="bg-black text-white font-bold hover:bg-gray-800 px-4 py-2 
           rounded-md normal-case"
         >
           Apply

@@ -1,22 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Box,
-  TextField,
-  Button,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  Chip,
-  Checkbox,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
-  FormControl,
-  IconButton,
-} from "@mui/material";
 import { CiSearch } from "react-icons/ci";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { users } from "../data/user";
@@ -45,77 +29,79 @@ const PeoplePage = () => {
   );
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", p: 2, width: "100%" }}>
-      <FormControl component="fieldset">
-        <RadioGroup
-          row
-          value={searchOption}
-          onChange={handleSearchOptionChange}
-        >
-          <FormControlLabel
+    <div className="flex flex-col p-4 space-y-4 w-full">
+      <div className="flex items-center space-x-4">
+        <label className="flex items-center space-x-2">
+          <input
+            type="radio"
             value="name"
-            control={<Radio />}
-            label="Search by name"
+            checked={searchOption === "name"}
+            onChange={handleSearchOptionChange}
+            className="form-radio"
           />
-          <FormControlLabel
+          <span>Search by name</span>
+        </label>
+        <label className="flex items-center space-x-2">
+          <input
+            type="radio"
             value="tag"
-            control={<Radio />}
-            label="Search by tags"
+            checked={searchOption === "tag"}
+            onChange={handleSearchOptionChange}
+            className="form-radio"
           />
-        </RadioGroup>
-      </FormControl>
-      <TextField
-        fullWidth
-        variant="outlined"
-        placeholder={`Search ${searchOption === "name" ? "service name" : "tags"}`}
-        value={searchText}
-        onChange={handleSearchChange}
-        InputProps={{
-          startAdornment: (
-            <Box sx={{ display: "flex", alignItems: "center", mr: 1 }}>
-              <CiSearch size={"30"} />
-            </Box>
-          ),
-          endAdornment: searchText ? (
-            <IconButton onClick={() => setSearchText("")}>
+          <span>Search by tags</span>
+        </label>
+      </div>
+      <div className="relative">
+        <input
+          type="text"
+          placeholder={`Search ${searchOption === "name" ? "service name" : "tags"}`}
+          value={searchText}
+          onChange={handleSearchChange}
+          className="w-full border border-gray-300 rounded-md p-2 pl-10"
+        />
+        <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
+          <CiSearch size={"30"} />
+        </div>
+        {searchText && (
+          <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+            <button onClick={() => setSearchText("")}>
               <IoIosCloseCircleOutline size={"30"} />
-            </IconButton>
-          ) : null,
-        }}
-      />
-      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-      <Button
-          variant="contained"
+            </button>
+          </div>
+        )}
+      </div>
+      <div className="flex justify-between mt-4">
+        <button
           onClick={resetToDefault}
-          sx={{
-            backgroundColor: '#f5f5f5',
-            color: 'black',
-            '&:hover': {
-              backgroundColor: '#e0e0e0',
-            },
-          }}
+          className="bg-gray-300 text-black font-bold hover:bg-gray-400 px-4 py-2 rounded-md normal-case"
         >
           Reset to Default
-        </Button>
-      </Box>
-      <Box sx={{ mt: 4 }}>
+        </button>
+        <button
+          className="bg-black text-white font-bold hover:bg-gray-800 px-4 py-2 rounded-md normal-case"
+        >
+          Apply
+        </button>
+      </div>
+      <div className="mt-4">
         {searchText && (
-          <Typography variant="h6" gutterBottom>
+          <h6 className="text-lg font-semibold mb-4">
             Showing {filteredUsers.length} results matching '{searchText}'
-          </Typography>
+          </h6>
         )}
-        <List>
+        <ul>
           {filteredUsers.map((user) => (
-            <ListItem key={user.id} sx={{ display: "flex", alignItems: "center" }}>
-              <Checkbox />
-              <ListItemText primary={user.name} />
-              <Chip label={user.type} className="mr-2" />
-              <Chip label={user.status} />
-            </ListItem>
+            <li key={user.id} className="flex items-center mb-2">
+              <input type="checkbox" className="mr-2" />
+              <span className="flex-1">{user.name}</span>
+              <span className="bg-gray-200 text-gray-700 rounded-full px-2 py-1 mr-2">{user.type}</span>
+              <span className="bg-gray-200 text-gray-700 rounded-full px-2 py-1">{user.status}</span>
+            </li>
           ))}
-        </List>
-      </Box>
-    </Box>
+        </ul>
+      </div>
+    </div>
   );
 };
 
