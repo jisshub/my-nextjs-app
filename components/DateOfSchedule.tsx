@@ -36,26 +36,28 @@ const DateOfSchedule = () => {
           <MenuItem value="This quarter">This quarter</MenuItem>
           <MenuItem value="2 quarters ago">2 quarters ago</MenuItem>
           <MenuItem value="This Year">This Year</MenuItem>
-          <MenuItem value="This Year">Last Year</MenuItem>
+          <MenuItem value="Last Year">Last Year</MenuItem>
         </Select>
       </FormControl>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DatePicker
-          label="From"
-          value={fromDate}
-          onChange={(newValue) => setFromDate(newValue)}
-          slots={{
-            textField: (props) => <TextField {...props} fullWidth sx={{ mb: 2 }} />,
-          }}
-        />
-        <DatePicker
-          label="To"
-          value={toDate}
-          onChange={(newValue) => setToDate(newValue)}
-          slots={{
-            textField: (props) => <TextField {...props} fullWidth sx={{ mb: 2 }} />,
-          }}
-        />
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <DatePicker
+            label="From"
+            value={fromDate}
+            onChange={(newValue) => setFromDate(newValue)}
+            slots={{
+              textField: (props) => <TextField {...props} fullWidth />,
+            }}
+          />
+          <DatePicker
+            label="To"
+            value={toDate}
+            onChange={(newValue) => setToDate(newValue)}
+            slots={{
+              textField: (props) => <TextField {...props} fullWidth />,
+            }}
+          />
+        </Box>
       </LocalizationProvider>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
         <Button variant="outlined" onClick={resetToDefault}>
