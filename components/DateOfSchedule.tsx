@@ -35,6 +35,8 @@ const DateOfSchedule = () => {
           <MenuItem value="Last month">Last month</MenuItem>
           <MenuItem value="This quarter">This quarter</MenuItem>
           <MenuItem value="2 quarters ago">2 quarters ago</MenuItem>
+          <MenuItem value="This Year">This Year</MenuItem>
+          <MenuItem value="This Year">Last Year</MenuItem>
         </Select>
       </FormControl>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
