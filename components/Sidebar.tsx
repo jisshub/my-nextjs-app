@@ -1,10 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Box, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import PeopleIcon from '@mui/icons-material/People';
-import CategoryIcon from '@mui/icons-material/Category';
+import { CalendarToday, People, Category } from '@mui/icons-material';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -22,46 +19,37 @@ const Sidebar = () => {
   };
 
   return (
-    <Box sx={{ width: 250, bgcolor: 'background.paper', height: '100vh', borderRight: '1px solid #ddd' }}>
-      <List component="nav">
-        <Link href="/service/date-of-schedule" passHref>
-          <ListItem
-            component="a"
+    <div className="w-64 bg-white h-screen border-r border-gray-200">
+      <nav className="flex flex-col">
+        <Link href="/service/date-of-schedule" legacyBehavior>
+          <a
             onClick={() => handleListItemClick(0)}
-            sx={{ backgroundColor: selectedIndex === 0 ? '#f0f0f0' : 'transparent', '&:hover': { backgroundColor: '#f0f0f0' } }}
+            className={`flex items-center p-4 hover:bg-gray-100 ${selectedIndex === 0 ? 'bg-gray-100' : ''}`}
           >
-            <ListItemIcon>
-              <CalendarTodayIcon />
-            </ListItemIcon>
-            <ListItemText primary="Scheduled Date" />
-          </ListItem>
+            <CalendarToday className="mr-4" />
+            <span>Scheduled Date</span>
+          </a>
         </Link>
-        <Link href="/service/people" passHref>
-          <ListItem
-            component="a"
+        <Link href="/service/people" legacyBehavior>
+          <a
             onClick={() => handleListItemClick(1)}
-            sx={{ backgroundColor: selectedIndex === 1 ? '#f0f0f0' : 'transparent', '&:hover': { backgroundColor: '#f0f0f0' } }}
+            className={`flex items-center p-4 hover:bg-gray-100 ${selectedIndex === 1 ? 'bg-gray-100' : ''}`}
           >
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="People" />
-          </ListItem>
+            <People className="mr-4" />
+            <span>People</span>
+          </a>
         </Link>
-        <Link href="/service/products" passHref>
-          <ListItem
-            component="a"
+        <Link href="/service/products" legacyBehavior>
+          <a
             onClick={() => handleListItemClick(2)}
-            sx={{ backgroundColor: selectedIndex === 2 ? '#f0f0f0' : 'transparent', '&:hover': { backgroundColor: '#f0f0f0' } }}
+            className={`flex items-center p-4 hover:bg-gray-100 ${selectedIndex === 2 ? 'bg-gray-100' : ''}`}
           >
-            <ListItemIcon>
-              <CategoryIcon />
-            </ListItemIcon>
-            <ListItemText primary="Services / Products" />
-          </ListItem>
+            <Category className="mr-4" />
+            <span>Services / Products</span>
+          </a>
         </Link>
-      </List>
-    </Box>
+      </nav>
+    </div>
   );
 };
 

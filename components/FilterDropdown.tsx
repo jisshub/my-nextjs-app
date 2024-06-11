@@ -66,25 +66,6 @@ export default function FilterDropdown() {
             </List>
           </Collapse>
         </List>
-
-        <ListItemButton className="pl-8 hover:bg-gray-100" onClick={() => handleNavigation('/service-type')}>
-          <ListItemIcon>
-            <ServiceTypeIcon />
-          </ListItemIcon>
-          <ListItemText primary="Service Type" />
-        </ListItemButton>
-        <ListItemButton className="pl-8 hover:bg-gray-100" onClick={() => handleNavigation('/service-name')}>
-          <ListItemIcon>
-            <ServiceNameIcon />
-          </ListItemIcon>
-          <ListItemText primary="Service Name" />
-        </ListItemButton>
-        <ListItemButton className="pl-8 hover:bg-gray-100" onClick={() => handleNavigation('/schedule')}>
-          <ListItemIcon>
-            <ScheduleIcon />
-          </ListItemIcon>
-          <ListItemText primary="Schedule" />
-        </ListItemButton>
       </Collapse>
     </List>
   );
