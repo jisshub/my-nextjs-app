@@ -1,4 +1,3 @@
-// components/FilterDropdown.tsx
 "use client";
 
 import * as React from 'react';
@@ -16,7 +15,7 @@ import ServiceNameIcon from '@mui/icons-material/Label';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import DateIcon from '@mui/icons-material/DateRange';
 import PeopleIcon from '@mui/icons-material/People';
-import { useRouter } from 'next/navigation'; // Ensure the correct use of useRouter from next/navigation
+import { useRouter } from 'next/navigation';
 
 export default function FilterDropdown() {
   const [open, setOpen] = React.useState(false);
@@ -31,12 +30,8 @@ export default function FilterDropdown() {
   };
 
   return (
-    <List
-      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-    >
-      <ListItemButton onClick={handleClick}>
+    <List className="w-full max-w-xs bg-white shadow-md rounded-md" component="nav" aria-labelledby="nested-list-subheader">
+      <ListItemButton onClick={handleClick} className="hover:bg-gray-100">
         <ListItemIcon>
           <FilterListIcon />
         </ListItemIcon>
@@ -46,7 +41,7 @@ export default function FilterDropdown() {
 
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }} onClick={handleClick}>
+          <ListItemButton className="pl-8 hover:bg-gray-100" onClick={handleClick}>
             <ListItemIcon>
               <ServicesIcon />
             </ListItemIcon>
@@ -56,13 +51,13 @@ export default function FilterDropdown() {
 
           <Collapse in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 8 }} onClick={() => handleNavigation('/service/date-of-schedule')}>
+              <ListItemButton className="pl-12 hover:bg-gray-100" onClick={() => handleNavigation('/service/date-of-schedule')}>
                 <ListItemIcon>
                   <DateIcon />
                 </ListItemIcon>
                 <ListItemText primary="Date of Schedule" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 8 }} onClick={() => handleNavigation('/service/people')}>
+              <ListItemButton className="pl-12 hover:bg-gray-100" onClick={() => handleNavigation('/service/people')}>
                 <ListItemIcon>
                   <PeopleIcon />
                 </ListItemIcon>
@@ -72,19 +67,19 @@ export default function FilterDropdown() {
           </Collapse>
         </List>
 
-        <ListItemButton sx={{ pl: 4 }} onClick={() => handleNavigation('/service-type')}>
+        <ListItemButton className="pl-8 hover:bg-gray-100" onClick={() => handleNavigation('/service-type')}>
           <ListItemIcon>
             <ServiceTypeIcon />
           </ListItemIcon>
           <ListItemText primary="Service Type" />
         </ListItemButton>
-        <ListItemButton sx={{ pl: 4 }} onClick={() => handleNavigation('/service-name')}>
+        <ListItemButton className="pl-8 hover:bg-gray-100" onClick={() => handleNavigation('/service-name')}>
           <ListItemIcon>
             <ServiceNameIcon />
           </ListItemIcon>
           <ListItemText primary="Service Name" />
         </ListItemButton>
-        <ListItemButton sx={{ pl: 4 }} onClick={() => handleNavigation('/schedule')}>
+        <ListItemButton className="pl-8 hover:bg-gray-100" onClick={() => handleNavigation('/schedule')}>
           <ListItemIcon>
             <ScheduleIcon />
           </ListItemIcon>
