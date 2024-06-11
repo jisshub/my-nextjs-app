@@ -87,9 +87,6 @@ const PeoplePage = () => {
         <Button variant="outlined" onClick={resetToDefault}>
           Reset to Default
         </Button>
-        <Button variant="contained" color="primary">
-          Apply
-        </Button>
       </Box>
       <Box sx={{ mt: 4 }}>
         {searchText && (
